@@ -10,7 +10,6 @@ import java.beans.PropertyVetoException;
 
 /**
  * 配置datasource到ioc容器里面
- *
  */
 @Configuration
 /**

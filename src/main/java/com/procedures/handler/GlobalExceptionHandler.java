@@ -10,7 +10,6 @@ import java.util.Map;
 
 /**
  * 统一异常处理类
- *
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
