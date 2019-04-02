@@ -4,17 +4,17 @@ package com.procedures.service.impl;
 import com.procedures.dao.AreaDao;
 import com.procedures.pojo.Area;
 import com.procedures.service.AreaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class AreaServiceImpl implements AreaService {
 
-    @Autowired
+    @Resource
     private AreaDao areaDao;
 
     @Override
