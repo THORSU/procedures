@@ -136,3 +136,16 @@ CREATE TABLE `studentsanswer`
   CHARACTER SET = utf8
   COLLATE = utf8_general_ci
   ROW_FORMAT = Dynamic;
+
+#题目类型
+DROP TABLE IF EXISTS `examtype`;
+CREATE TABLE `examtype`
+(
+    `id`   int(11)                                                 NOT NULL AUTO_INCREMENT,
+    `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+#                              `createtime` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB
+  CHARACTER SET = utf8
+  COLLATE = utf8_general_ci
+  ROW_FORMAT = Dynamic;

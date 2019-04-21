@@ -15,4 +15,6 @@ public interface WeChatService {
     void loginOrRegisterConsumer(Consumer consumer);
 
     void updateConsumerInfo(Consumer consumer);
+
+    Consumer getConsumerInfo();
 }

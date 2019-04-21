@@ -4,8 +4,10 @@ package com.procedures.pojo;
 import com.procedures.enums.Gender;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class Consumer {
+public class Consumer implements Serializable {
 
     private Long id;
     private String username;

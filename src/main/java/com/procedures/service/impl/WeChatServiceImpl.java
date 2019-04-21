@@ -119,5 +119,11 @@ public class WeChatServiceImpl implements WeChatService {
         consumerMapper.updateConsumer(consumerExist);
     }
 
+    @Override
+    public Consumer getConsumerInfo() {
+        Consumer consumerExist = consumerMapper.findConsumerByWechatOpenid(AppContext.getCurrentUserWechatOpenId());
+        return consumerExist;
+    }
+
 
 }
