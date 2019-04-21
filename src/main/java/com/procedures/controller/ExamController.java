@@ -28,7 +28,7 @@ public class ExamController {
         list = examinfoService.selectList(typeId);
         if (list.size() <= 5) {
             //如果题库出题小于等于5题时则直接返回
-            return list;
+            return JSON.toJSONString(list);
         } else {
             ArrayList<Integer> li = new ArrayList<>();
             do {
