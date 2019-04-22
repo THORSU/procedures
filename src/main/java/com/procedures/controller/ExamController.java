@@ -5,7 +5,10 @@ import com.procedures.pojo.Examinfo;
 import com.procedures.service.ExaminfoService;
 import com.procedures.service.ExamtypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +25,8 @@ public class ExamController {
     private ExamtypeService examtypeService;
 
     //根据题目类别id 随机选取5道题进行出题
-    @PostMapping("/getExaminfoByTypeId")
-    public Object getExaminfoByTypeId(@RequestBody Integer typeId) {
+    @GetMapping("/getExaminfoByTypeId")
+    public Object getExaminfoByTypeId(@RequestParam("typeId") Integer typeId) {
         List<Examinfo> list;
         list = examinfoService.selectList(typeId);
         if (list.size() <= 5) {

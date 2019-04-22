@@ -3,6 +3,6 @@
 <mapper namespace="com.procedures.dao.ExaminfoMapper">
 
     <select id="selectList" resultType="com.procedures.pojo.Examinfo">
-        select * from `examinfo` where examtypeid = #{typeid}
+        select * from `examinfo` where examtypeid = #{typeId}
     </select>
 </mapper>
