@@ -116,6 +116,7 @@ public class WeChatServiceImpl implements WeChatService {
         consumerExist.setNickname(consumer.getNickname());
         consumerExist.setPhone(consumer.getPhone());
         consumerExist.setUsername(consumer.getUsername());
+        consumerExist.setGrade(consumer.getGrade());
         consumerMapper.updateConsumer(consumerExist);
     }
 

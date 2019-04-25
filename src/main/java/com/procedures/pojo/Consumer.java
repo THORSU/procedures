@@ -15,6 +15,7 @@ public class Consumer implements Serializable {
     private Long phone;
     private String nickname;
     private String avatarUrl;
+    private Integer grade;
     private Gender gender;
     private String email;
     private Long lastLoginTime;

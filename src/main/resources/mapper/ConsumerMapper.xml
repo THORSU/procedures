@@ -16,7 +16,8 @@
           `created_by`,
           `created_at`,
           `updated_by`,
-          `updated_at`
+          `updated_at`,
+          `grade`
         FROM
           `consumer`
         WHERE `id` = #{id}
@@ -36,7 +37,8 @@
           `created_by`,
           `created_at`,
           `updated_by`,
-          `updated_at`
+          `updated_at`,
+          `grade`
         FROM
           `consumer`
         WHERE `wechat_openid` = #{wechatOpenid}
@@ -105,6 +107,9 @@
             </if>
             <if test="updatedAt != null">
                 `updated_at` = #{updatedAt},
+            </if>
+            <if test="grade != null">
+                `grade` = #{grade},
             </if>
         </trim>
         WHERE `id` = #{id}

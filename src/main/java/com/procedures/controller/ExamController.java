@@ -1,9 +1,11 @@
 package com.procedures.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.procedures.pojo.Consumer;
 import com.procedures.pojo.Examinfo;
 import com.procedures.service.ExaminfoService;
 import com.procedures.service.ExamtypeService;
+import com.procedures.service.WeChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,9 @@ public class ExamController {
 
     @Autowired
     private ExamtypeService examtypeService;
+
+    @Autowired
+    private WeChatService weChatService;
 
     //根据题目类别id 随机选取5道题进行出题
     @GetMapping("/getExaminfoByTypeId")
@@ -64,5 +69,20 @@ public class ExamController {
     @GetMapping("/getExamtype")
     public Object getExamtype() {
         return JSON.toJSONString(examtypeService.getExamtype());
+    }
+
+    /**
+     * 给用户增加积分
+     *
+     * @return
+     */
+    @GetMapping("/addIntegral")
+    public Object addIntegral(@RequestParam("examNum") Integer examNum) {
+        Consumer consumer = weChatService.getConsumerInfo();
+        //答对题的个数的10倍生成积分加上原来的积分
+        Integer examGrade = examNum * 10 + consumer.getGrade();
+        consumer.setGrade(examGrade);
+        weChatService.updateConsumerInfo(consumer);
+        return JSON.toJSONString("success");
     }
 }
