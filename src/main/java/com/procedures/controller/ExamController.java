@@ -61,6 +61,23 @@ public class ExamController {
     }
 
 
+    @GetMapping("/getExaminfo")
+    public Object getExaminfo() {
+        List<Examinfo> list = examinfoService.selectExam();
+        ArrayList<Integer> li = new ArrayList<>();
+        do {
+            int result = getRandomNum(list.size());
+            if (!li.contains(result)) {
+                li.add(result);
+            }
+        } while (li.size() < 30);
+        List<Examinfo> list_new = new ArrayList<>();
+        for (int i = 0; i < li.size(); i++) {
+            list_new.add(list.get(li.get(i)));
+        }
+        System.out.println(list_new.toString());
+        return JSON.toJSONString(list_new);
+    }
     /**
      * 获取所有题目类型
      *

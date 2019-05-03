@@ -17,4 +17,9 @@ public class ExaminfoServiceImpl implements ExaminfoService {
     public List<Examinfo> selectList(Integer typeId) {
         return examinfoMapper.selectList(typeId);
     }
+
+    @Override
+    public List<Examinfo> selectExam() {
+        return examinfoMapper.selectExam();
+    }
 }

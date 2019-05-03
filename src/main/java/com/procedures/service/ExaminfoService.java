@@ -13,4 +13,11 @@ public interface ExaminfoService {
      * @return
      */
     List<Examinfo> selectList(Integer typeId);
+
+    /**
+     * 不按类型选择题目
+     *
+     * @return
+     */
+    List<Examinfo> selectExam();
 }

@@ -5,4 +5,7 @@
     <select id="selectList" resultType="com.procedures.pojo.Examinfo">
         select * from `examinfo` where examtypeid = #{typeId}
     </select>
+    <select id="selectExam" resultType="com.procedures.pojo.Examinfo">
+        select * from `examinfo`
+    </select>
 </mapper>

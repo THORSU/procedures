@@ -15,4 +15,11 @@ public interface ExaminfoMapper {
      * @return
      */
     List<Examinfo> selectList(@Param("typeId") Integer typeId);
+
+    /**
+     * 不按类型选择题目
+     *
+     * @return
+     */
+    List<Examinfo> selectExam();
 }
