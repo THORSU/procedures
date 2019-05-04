@@ -56,6 +56,7 @@ public class WeChatServiceImpl implements WeChatService {
         return new WechatAuthenticationResponse(thirdSession);
     }
 
+    //访问微信授接口
     @Override
     public WechatAuthCodeResponse getWxSession(String code) {
         LOGGER.info(code);

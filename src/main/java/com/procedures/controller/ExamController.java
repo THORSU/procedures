@@ -33,11 +33,13 @@ public class ExamController {
     @GetMapping("/getExaminfoByTypeId")
     public Object getExaminfoByTypeId(@RequestParam("typeId") Integer typeId) {
         List<Examinfo> list;
+        //获取此类型所有题目
         list = examinfoService.selectList(typeId);
         if (list.size() <= 5) {
             //如果题库出题小于等于5题时则直接返回
             return JSON.toJSONString(list);
         } else {
+            //随机出来5个整型数字 小于list的大小
             ArrayList<Integer> li = new ArrayList<>();
             do {
                 int result = getRandomNum(list.size());
@@ -46,6 +48,7 @@ public class ExamController {
                 }
             } while (li.size() < 5);
             List<Examinfo> list_new = new ArrayList<>();
+            //获取5个数所对应的list的位置的值
             for (int i = 0; i < li.size(); i++) {
                 list_new.add(list.get(li.get(i)));
             }

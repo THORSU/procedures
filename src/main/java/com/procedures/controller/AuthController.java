@@ -23,6 +23,7 @@ public class AuthController {
     @Autowired
     private WeChatService weChatService;
 
+    //授权接口
     @PostMapping("/auth")
     public ResponseEntity<WechatAuthenticationResponse> createAuthenticationToken(@RequestBody AccountDto accountDto)
             throws AuthenticationException {
@@ -30,11 +31,13 @@ public class AuthController {
         return ResponseEntity.ok(jwtResponse);
     }
 
+    //更新用户表
     @PostMapping("/updateConsumerInfo")
     public void updateConsumerInfo(@RequestBody Consumer consumer) {
         weChatService.updateConsumerInfo(consumer);
     }
 
+    //获得用户信息
     @GetMapping("/getConsumerInfo")
     public Object getConsumerInfo() {
         return JSON.toJSONString(weChatService.getConsumerInfo());
