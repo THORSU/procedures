@@ -1,19 +1,18 @@
 package com.procedures.controller;
 
+import com.procedures.config.AppContext;
 import com.procedures.pojo.Answerresult;
 import com.procedures.pojo.Studentsanswer;
 import com.procedures.service.AnswerResultService;
 import com.procedures.service.StudentsAnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/answer")
@@ -46,8 +45,7 @@ public class AnswerController {
 
         //1.添加答题主表
         Studentsanswer ss = new Studentsanswer();
-        ss.setExamtypeid(Integer.valueOf(examtypeid));
-        ss.setStudentid(Integer.valueOf(studentid));
+        ss.setStudentid(studentid);
         ss.setGrade(grade);
         ss.setCreatetime(createtime);
         studentsAnswerService.insert(ss);
@@ -88,5 +86,48 @@ public class AnswerController {
             }
         }
         return count;
+    }
+
+    /**
+     * 排位模式添加成绩
+     *
+     * @param grade
+     * @return
+     */
+    @GetMapping("/addgrade")
+    public Object addgrade(@RequestParam Integer grade) {
+        String studentid = AppContext.getCurrentUserWechatOpenId();
+        Studentsanswer studentsanswer = answerResultService.getAnswer(studentid);
+        Studentsanswer studentsanswer1 = new Studentsanswer();
+        if (studentsanswer == null) {
+            studentsanswer1.setStudentid(studentid);
+            studentsanswer1.setGrade(grade);
+            Integer integer = answerResultService.addGrade(studentsanswer1);
+            if (integer == 1) {
+                return "add success";
+            } else {
+                return "add fail";
+            }
+        } else {
+            studentsanswer1.setStudentid(studentsanswer.getStudentid());
+            studentsanswer1.setGrade(grade);
+            Integer integer = answerResultService.updateGrade(studentsanswer1);
+            if (integer == 1) {
+                return "update success";
+            } else {
+                return "update fail";
+            }
+        }
+    }
+
+    /**
+     * 判断成绩是否是前3
+     *
+     * @return
+     */
+    @GetMapping("istop")
+    public boolean istop() {
+        Set<String> sets = answerResultService.getTopGrade();
+        return sets.contains(AppContext.getCurrentUserWechatOpenId());
     }
 }

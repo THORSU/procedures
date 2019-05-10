@@ -29,10 +29,10 @@ CREATE TABLE `consumer`
     `email`         VARCHAR(100)  DEFAULT NULL COMMENT 'email',
     `grade`         INT(11)       DEFAULT NULL COMMENT '积分',
     `deleted`       TINYINT(1)    DEFAULT '0' COMMENT '0:normal 1:deleted',
-    `created_by`    BIGINT(20)    DEFAULT NULL COMMENT '创建时间',,
+    `created_by`    BIGINT(20)    DEFAULT NULL COMMENT '创建时间',
     `created_at`    BIGINT(20)    DEFAULT NULL,
     `updated_by`    BIGINT(20)    DEFAULT NULL,
-    `updated_at`    BIGINT(20)    DEFAULT NULL COMMENT '更新时间',,
+    `updated_at`    BIGINT(20)    DEFAULT NULL COMMENT '更新时间',
     PRIMARY KEY (`id`)
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4;
@@ -83,10 +83,10 @@ CREATE TABLE `answerresult`
 DROP TABLE IF EXISTS `studentsanswer`;
 CREATE TABLE `studentsanswer`
 (
-    `id`         int(11)     NOT NULL AUTO_INCREMENT COMMENT '业务主键',
-    `studentid`  int(11)     NULL DEFAULT NULL COMMENT '学生编号',
-    `grade`      int(11)     NULL DEFAULT NULL COMMENT '积分',
-    `createtime` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `id`         int(11)      NOT NULL AUTO_INCREMENT COMMENT '业务主键',
+    `studentid`  varchar(255) NULL DEFAULT NULL COMMENT '学生编号',
+    `grade`      int(11)      NULL DEFAULT NULL COMMENT '积分',
+    `createtime` datetime(0)  NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   CHARACTER SET = utf8

@@ -12,21 +12,17 @@ public class Studentsanswer implements Serializable {
     /**
      * 业务主键
      */
-
     private Integer id;
+
     /**
-     * 题目类别ID
+     * 用户id
      */
-
-    private Integer examtypeid;
-
-
-    private String examinfoname;
+    private String studentid;
     /**
      * 成绩
      */
     private Integer grade;
-    private Integer studentid;
+
     /**
      * 创建时间
      */

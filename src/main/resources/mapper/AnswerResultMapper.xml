@@ -7,4 +7,20 @@
         (studentid, ssid, examid, a, b, c, d, studentanswer, correctanswer, istrue, createtime)
         values (#{studentid},#{ssid},#{examid},#{a},#{b},#{c},#{d},#{studentanswer},#{correctanswer},#{istrue},#{createtime})
     </insert>
+
+    <select id="getAnswer" resultType="com.procedures.pojo.Studentsanswer">
+        select * from `studentsanswer` where studentid = #{studentid}
+    </select>
+
+    <insert id="addGrade" parameterType="com.procedures.pojo.Studentsanswer">
+        insert into `studentsanswer` (studentid, grade) values (#{studentid},#{grade})
+    </insert>
+
+    <update id="updateGrade" parameterType="com.procedures.pojo.Studentsanswer">
+        update `studentsanswer` set grade = #{grade} where studentid = #{studentid}
+    </update>
+
+    <select id="getTopGrade" resultType="java.lang.String">
+        select studentid from `studentsanswer` order by grade desc limit 3
+    </select>
 </mapper>
